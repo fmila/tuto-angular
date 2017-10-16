@@ -26,7 +26,7 @@ export class ContactNewComponent implements OnInit {
 
   onSubmit() { 
     this.http
-      .post(environment.wsContactNewUrl,JSON.stringify(this.contact))
+      .post(environment.apiEndpoint + '/contact/',JSON.stringify(this.contact))
       .subscribe(
         resp => {
           this.submitted = true;

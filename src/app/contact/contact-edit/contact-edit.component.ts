@@ -27,7 +27,7 @@ export class ContactEditComponent implements OnInit {
 
   onSubmit() { 
     this.contactObservableService
-      .update(environment.wsContactUpdateUrl + this.contact.id, this.contact)
+      .update(environment.apiEndpoint + '/contact/' + this.contact.id, this.contact)
       .subscribe(
         resp => {
           this.submitted = true;

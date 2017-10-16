@@ -26,7 +26,7 @@ export class ContactListComponent implements OnInit {
   constructor(private http: HttpClient, private contactObservableService: ContactObservableService) { }
 
   ngOnInit() {
-    this.http.get<Contact[]>(environment.wsContactListUrl)
+    this.http.get<Contact[]>(environment.apiEndpoint + '/contact/')
           .subscribe(resp => {            
              this.contacts = resp;
           });
@@ -39,7 +39,7 @@ export class ContactListComponent implements OnInit {
 
   delete(contact: Contact):void {
     this.contactObservableService
-      .delete(environment.wsContactDeleteUrl + contact.id, contact)
+      .delete(environment.apiEndpoint + '/contact/' + contact.id, contact)
       .subscribe(
         resp => {
           this.deleted = true;

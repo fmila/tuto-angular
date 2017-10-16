@@ -5,9 +5,5 @@
 
 export const environment = {
   production: false,
-  wsContactEditUrl: 'http://symfony-ws.dev:8080/contact/',
-  wsContactUpdateUrl: 'http://symfony-ws.dev:8080/contact/',
-  wsContactListUrl: 'http://symfony-ws.dev:8080/contact/',
-  wsContactNewUrl: 'http://symfony-ws.dev:8080/contact/',
-  wsContactDeleteUrl: 'http://symfony-ws.dev:8080/contact/'
+  apiEndpoint: 'http://symfony-ws.dev:8080'
 };

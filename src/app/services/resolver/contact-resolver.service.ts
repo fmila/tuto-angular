@@ -13,7 +13,7 @@ export class ContactResolver implements Resolve<Contact> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Contact> {
     let id: any = route.params['id'];
-    return this.http.get(environment.wsContactEditUrl + id)
+    return this.http.get(environment.apiEndpoint+ '/contact/' + id)
       .map( (res) => {
           if (res.json() === null) {
             this.router.navigate(["/home"]);
