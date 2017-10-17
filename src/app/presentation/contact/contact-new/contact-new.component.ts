@@ -1,32 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Contact } from '../contact';
-import { environment } from '../../../environments/environment';
+import { ContactDto } from "../../../donnee/contact/contact-dto";
+import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
 
 @Component({
   selector: 'app-contact-new',
   templateUrl: './contact-new.component.html',
-  styleUrls: ['./contact-new.component.css']
+  styleUrls: ['./contact-new.component.css'],
+  providers: [ContactApplicatifService]
 })
 export class ContactNewComponent implements OnInit {
 
-  contact: Contact;
+  contact: ContactDto;
   id: number;
   error: boolean = false;
   submitted: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private contactApplicatifService: ContactApplicatifService) {
     
   }
 
   ngOnInit() {
-    this.contact = new Contact();
+    this.contact = new ContactDto();
   }
 
   onSubmit() { 
-    this.http
-      .post(environment.apiEndpoint + '/contact/',JSON.stringify(this.contact))
+    this.contactApplicatifService
+      .create(this.contact)
       .subscribe(
         resp => {
           this.submitted = true;

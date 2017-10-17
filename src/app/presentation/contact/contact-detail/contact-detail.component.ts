@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Contact } from '../contact';
+import { ContactDto } from "../../../donnee/contact/contact-dto";
 
 @Component({
   selector: 'app-contact-detail',
@@ -9,7 +9,7 @@ import { Contact } from '../contact';
 })
 export class ContactDetailComponent implements OnInit {
 
-  @Input() contact: Contact;
+  @Input() contact: ContactDto;
   
   constructor() { }
 

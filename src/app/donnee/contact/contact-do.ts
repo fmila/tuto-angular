@@ -1,4 +1,4 @@
-export class Contact {
+export class ContactDo {
     id: number;
     firstName: string;
     lastName: string;

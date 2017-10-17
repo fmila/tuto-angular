@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-import { ContactResolver } from './services/resolver/contact-resolver.service';
-import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
-import { ContactEditComponent } from './contact/contact-edit/contact-edit.component';
-import { ContactNewComponent } from './contact/contact-new/contact-new.component';
+import { HomeComponent } from '../../presentation/home/home.component';
+import { ContactComponent } from '../../presentation/contact/contact.component';
+import { ContactEditComponent } from '../../presentation/contact/contact-edit/contact-edit.component';
+import { ContactNewComponent } from '../../presentation/contact/contact-new/contact-new.component';
+import { ContactResolver } from '../../service-applicatif/contact/contact-resolver.service';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },

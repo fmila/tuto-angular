@@ -1,45 +1,43 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-import { Contact } from '../contact';
-import { environment } from '../../../environments/environment';
-import { ContactObservableService } from '../../services/contact/contact-observable.service';
+import { ContactDto } from "../../../donnee/contact/contact-dto";
+import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
   styleUrls: ['./contact-list.component.css'],
-  providers: [ContactObservableService]
+  providers: [ContactApplicatifService]
 })
 export class ContactListComponent implements OnInit {
 
-  contacts : Contact[];
+  contacts : ContactDto[];
   deleted : boolean = false;
   error : boolean = false;
 
-  @Output() onSelect = new EventEmitter<Contact>(); 
+  @Output() onSelect = new EventEmitter<ContactDto>(); 
 
-  @Output() onEdit = new EventEmitter<Contact>(); 
+  @Output() onEdit = new EventEmitter<ContactDto>(); 
 
-  @Output() onDelete = new EventEmitter<Contact>(); 
+  @Output() onDelete = new EventEmitter<ContactDto>(); 
 
-  constructor(private http: HttpClient, private contactObservableService: ContactObservableService) { }
+  constructor(private contactApplicatifService: ContactApplicatifService) { }
 
   ngOnInit() {
-    this.http.get<Contact[]>(environment.apiEndpoint + '/contact/')
+    this.contactApplicatifService.getAll()
           .subscribe(resp => {            
              this.contacts = resp;
           });
 
   }
 
-  select(contact: Contact):void {
+  select(contact: ContactDto):void {
     this.onSelect.emit(contact);
   }
 
-  delete(contact: Contact):void {
-    this.contactObservableService
-      .delete(environment.apiEndpoint + '/contact/' + contact.id, contact)
+  delete(contact: ContactDto):void {
+    this.contactApplicatifService
+      .delete(contact.id)
       .subscribe(
         resp => {
           this.deleted = true;
@@ -57,7 +55,7 @@ export class ContactListComponent implements OnInit {
       ;
   }
 
-  edit(contact: Contact):void {
+  edit(contact: ContactDto):void {
     this.onEdit.emit(contact);
   }
 

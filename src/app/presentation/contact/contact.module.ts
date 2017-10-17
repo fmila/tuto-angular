@@ -9,6 +9,7 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
+import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,8 @@ import { ContactNewComponent } from './contact-new/contact-new.component';
     RouterModule,
     FormsModule
   ],
-  declarations: [ContactComponent, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent]
+  declarations: [ContactComponent, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent],
+  providers: [ContactApplicatifService]
 })
 export class ContactModule { }
+

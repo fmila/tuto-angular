@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Contact } from '../contact';
-import { environment } from '../../../environments/environment';
-import { ContactObservableService } from '../../services/contact/contact-observable.service';
+
+import { ContactDto } from "../../../donnee/contact/contact-dto";
+import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
 
 @Component({
   selector: 'app-contact-edit',
   templateUrl: './contact-edit.component.html',
   styleUrls: ['./contact-edit.component.css'],
-  providers: [ContactObservableService]
+  providers: [ContactApplicatifService]
 })
 export class ContactEditComponent implements OnInit {
 
-  contact: Contact;
+  contact: ContactDto;
   id: number;
   error: boolean = false;
   submitted: boolean = false;
 
-  constructor(private route: ActivatedRoute, private contactObservableService: ContactObservableService) {
+  constructor(private route: ActivatedRoute, private contactApplicatifService: ContactApplicatifService) {
     
   }
 
@@ -26,8 +26,8 @@ export class ContactEditComponent implements OnInit {
   }
 
   onSubmit() { 
-    this.contactObservableService
-      .update(environment.apiEndpoint + '/contact/' + this.contact.id, this.contact)
+    this.contactApplicatifService
+      .update(this.contact.id, this.contact)
       .subscribe(
         resp => {
           this.submitted = true;
