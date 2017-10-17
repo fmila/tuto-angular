@@ -28,11 +28,12 @@ export class ContactNewComponent implements OnInit {
       .create(this.contact)
       .subscribe(
         resp => {
-          this.flashMessageService.success('Added!!', );
           this.router.navigate(['contact-edit', resp.id]);
+          //this.router.navigate(['contact']);
+          this.flashMessageService.success('Added!!', true);
         },
         err => {
-          this.flashMessageService.error('An error occured!!');
+          this.flashMessageService.error('An error occured!!', true);
         }
       )
       ;
