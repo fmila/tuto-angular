@@ -1,22 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
-import { FlashMessageService } from '../../../contrainte/commun/flash-message.service';
+import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 
 @Component({
   selector: 'app-contact-edit',
   templateUrl: './contact-edit.component.html',
-  styleUrls: ['./contact-edit.component.css'],
-  providers: [ContactApplicatifService]
+  styleUrls: ['./contact-edit.component.css']
 })
-export class ContactEditComponent implements OnInit, OnDestroy {
+export class ContactEditComponent implements OnInit {
 
   contact: ContactDto;
-  message = null;
-  subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService) {
     
@@ -24,9 +20,6 @@ export class ContactEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.contact = this.route.snapshot.data['contact'];
-    this.subscription = this.flashMessageService.getMessage().subscribe(message => {
-        this.message = message;
-    });
   }
 
   onSubmit() { 
@@ -34,17 +27,12 @@ export class ContactEditComponent implements OnInit, OnDestroy {
       .update(this.contact.id, this.contact)
       .subscribe(
         resp => {
-          this.flashMessageService.setMessage('Updated!!', 1);
+          this.flashMessageService.success('Updated!!', );
         },
         err => {
-          this.flashMessageService.setMessage('An error occured!!', 2);
+          this.flashMessageService.error('An error occured!!');
         }
       )
       ;
-  }
-  
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
   }
 }

@@ -1,21 +1,17 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
-import { FlashMessageService } from '../../../contrainte/commun/flash-message.service';
+import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.css'],
-  providers: [ContactApplicatifService]
+  styleUrls: ['./contact-list.component.css']
 })
-export class ContactListComponent implements OnInit, OnDestroy {
+export class ContactListComponent implements OnInit {
 
   contacts : ContactDto[];
-  subscription: Subscription;
-  message = null;
 
   @Output() onSelect = new EventEmitter<ContactDto>(); 
 
@@ -30,9 +26,6 @@ export class ContactListComponent implements OnInit, OnDestroy {
       .subscribe(resp => {            
           this.contacts = resp;
       });
-    this.subscription = this.flashMessageService.getMessage().subscribe(message => {
-        this.message = message;
-    });
   }
 
   select(contact: ContactDto):void {
@@ -44,7 +37,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
       .delete(contact.id)
       .subscribe(
         resp => {
-          this.flashMessageService.setMessage('Deleted!!', 1);
+          this.flashMessageService.success('Deleted!!', );
           for(let i = 0; i < this.contacts.length; i++) { 
             if(this.contacts[i] == contact){
               this.contacts.splice(i, 1);
@@ -52,7 +45,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
           }
         },
         err => {
-          this.flashMessageService.setMessage('An error occured!!', 2);
+          this.flashMessageService.error('An error occured!!');
         }
       )
       ;
@@ -60,10 +53,5 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   edit(contact: ContactDto):void {
     this.onEdit.emit(contact);
-  }
-
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
   }
 }

@@ -8,6 +8,7 @@ import { ServiceApplicatifModule } from './service-applicatif/service-applicatif
 import { ServiceMetierModule } from './service-metier/service-metier.module';
 import { ServiceBusinessDelegateModule } from './service-business-delegate/service-business-delegate.module';
 import { AppRoutingModule } from './contrainte/config/app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent

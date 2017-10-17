@@ -4,18 +4,16 @@ import { Router } from '@angular/router';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
-import { FlashMessageService } from '../../../contrainte/commun/flash-message.service';
+import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 
 @Component({
   selector: 'app-contact-new',
   templateUrl: './contact-new.component.html',
-  styleUrls: ['./contact-new.component.css'],
-  providers: [ContactApplicatifService]
+  styleUrls: ['./contact-new.component.css']
 })
 export class ContactNewComponent implements OnInit {
 
   contact: ContactDto;
-  message = null;
 
   constructor(private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService, private router: Router) {
     
@@ -23,9 +21,6 @@ export class ContactNewComponent implements OnInit {
 
   ngOnInit() {
     this.contact = new ContactDto();
-    this.flashMessageService.getMessage().subscribe(message => {
-        this.message = message;
-    });
   }
 
   onSubmit() { 
@@ -33,11 +28,11 @@ export class ContactNewComponent implements OnInit {
       .create(this.contact)
       .subscribe(
         resp => {
-          this.flashMessageService.setMessage('Added!!', 1);
+          this.flashMessageService.success('Added!!', );
           this.router.navigate(['contact-edit', resp.id]);
         },
         err => {
-          this.flashMessageService.setMessage('An error occured!!', 2);
+          this.flashMessageService.error('An error occured!!');
         }
       )
       ;
