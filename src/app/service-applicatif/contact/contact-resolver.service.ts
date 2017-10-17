@@ -12,7 +12,7 @@ export class ContactResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     let id: any = route.params['id'];
-    return this.contactApplicatifService.getContact(id)
+    return this.contactApplicatifService.find(id)
       .map( (res) => {
           if (res === null) {
             this.router.navigate(["/home"]);

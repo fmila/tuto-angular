@@ -22,14 +22,14 @@ export class ContactBusinessDelegateService {
     constructor(private http: Http) {
     }
 
-    getAll(): Observable<any> {
+    findAll(): Observable<any> {
         return this.http
             .get(environment.apiEndpoint + '/contact/')
             .map(this.extractData)
             .catch(this.handleError);
     }  
 
-    getContact(id: number): Observable<any> {
+    find(id: number): Observable<any> {
         return this.http
             .get(environment.apiEndpoint + '/contact/' + id)
             .map(this.extractData)

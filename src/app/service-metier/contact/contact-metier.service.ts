@@ -21,11 +21,11 @@ export class ContactMetierService {
         return this.contactBusinessDelegateService.delete(id);
     }
 
-    getContact(id: number): Observable<any> {
-        return this.contactBusinessDelegateService.getContact(id);
+    find(id: number): Observable<any> {
+        return this.contactBusinessDelegateService.find(id);
     }
 
-    getAll(): Observable<any> {
-        return this.contactBusinessDelegateService.getAll();
+    findAll(): Observable<any> {
+        return this.contactBusinessDelegateService.findAll();
     }
 }

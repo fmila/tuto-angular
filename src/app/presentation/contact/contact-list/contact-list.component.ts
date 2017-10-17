@@ -22,7 +22,7 @@ export class ContactListComponent implements OnInit {
   constructor(private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService) { }
 
   ngOnInit() {
-    this.contactApplicatifService.getAll()
+    this.contactApplicatifService.findAll()
       .subscribe(resp => {            
           this.contacts = resp;
       });
