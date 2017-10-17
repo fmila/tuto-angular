@@ -1,5 +1,5 @@
-<div class="alert alert-success" role="alert" *ngIf="!error && deleted">Deleted!!</div>
-<div class="alert alert-danger" role="alert" *ngIf="error">An error occured!!</div>
+<div class="alert alert-success" role="alert" *ngIf="message && message.type == 1">{{ message.text }}</div>
+<div class="alert alert-danger" role="alert" *ngIf="message && message.type == 2">{{ message.text }}</div>
 <table class="table table-striped">
   <thead>
     <th>ID</th>

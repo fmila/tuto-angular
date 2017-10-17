@@ -10,6 +10,7 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
 import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
+import { FlashMessageService } from '../../contrainte/commun/flash-message.service';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { ContactApplicatifService } from '../../service-applicatif/contact/conta
     FormsModule
   ],
   declarations: [ContactComponent, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent],
-  providers: [ContactApplicatifService]
+  providers: [ContactApplicatifService, FlashMessageService]
 })
 export class ContactModule { }
 

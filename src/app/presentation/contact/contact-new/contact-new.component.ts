@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
+import { FlashMessageService } from '../../../contrainte/commun/flash-message.service';
 
 @Component({
   selector: 'app-contact-new',
@@ -13,16 +15,17 @@ import { ContactApplicatifService } from '../../../service-applicatif/contact/co
 export class ContactNewComponent implements OnInit {
 
   contact: ContactDto;
-  id: number;
-  error: boolean = false;
-  submitted: boolean = false;
+  message = null;
 
-  constructor(private contactApplicatifService: ContactApplicatifService) {
+  constructor(private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService, private router: Router) {
     
   }
 
   ngOnInit() {
     this.contact = new ContactDto();
+    this.flashMessageService.getMessage().subscribe(message => {
+        this.message = message;
+    });
   }
 
   onSubmit() { 
@@ -30,11 +33,11 @@ export class ContactNewComponent implements OnInit {
       .create(this.contact)
       .subscribe(
         resp => {
-          this.submitted = true;
-          this.error = false;
+          this.flashMessageService.setMessage('Added!!', 1);
+          this.router.navigate(['contact-edit', resp.id]);
         },
         err => {
-          this.error = true;
+          this.flashMessageService.setMessage('An error occured!!', 2);
         }
       )
       ;

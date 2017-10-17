@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
+import { FlashMessageService } from '../../../contrainte/commun/flash-message.service';
 
 @Component({
   selector: 'app-contact-edit',
@@ -10,19 +12,21 @@ import { ContactApplicatifService } from '../../../service-applicatif/contact/co
   styleUrls: ['./contact-edit.component.css'],
   providers: [ContactApplicatifService]
 })
-export class ContactEditComponent implements OnInit {
+export class ContactEditComponent implements OnInit, OnDestroy {
 
   contact: ContactDto;
-  id: number;
-  error: boolean = false;
-  submitted: boolean = false;
+  message = null;
+  subscription: Subscription;
 
-  constructor(private route: ActivatedRoute, private contactApplicatifService: ContactApplicatifService) {
+  constructor(private route: ActivatedRoute, private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService) {
     
   }
 
   ngOnInit() {
     this.contact = this.route.snapshot.data['contact'];
+    this.subscription = this.flashMessageService.getMessage().subscribe(message => {
+        this.message = message;
+    });
   }
 
   onSubmit() { 
@@ -30,13 +34,17 @@ export class ContactEditComponent implements OnInit {
       .update(this.contact.id, this.contact)
       .subscribe(
         resp => {
-          this.submitted = true;
-          this.error = false;
+          this.flashMessageService.setMessage('Updated!!', 1);
         },
         err => {
-          this.error = true;
+          this.flashMessageService.setMessage('An error occured!!', 2);
         }
       )
       ;
+  }
+  
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 }
