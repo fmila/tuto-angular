@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../../environments/environment';
+import { ContactDto } from '../../donnee/contact/contact-dto';
 
 // Observable class extensions
 import 'rxjs/add/observable/of';
@@ -22,21 +23,21 @@ export class ContactBusinessDelegateService {
     constructor(private http: Http) {
     }
 
-    findAll(): Observable<any> {
+    findAll(): Observable<ContactDto[]> {
         return this.http
             .get(environment.apiEndpoint + '/contact/')
             .map(this.extractData)
             .catch(this.handleError);
     }  
 
-    find(id: number): Observable<any> {
+    find(id: number): Observable<ContactDto> {
         return this.http
             .get(environment.apiEndpoint + '/contact/' + id)
             .map(this.extractData)
             .catch(this.handleError);
     }   
 
-    create(param: any): Observable<any> {
+    create(param: any): Observable<ContactDto> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers  });
         let body = JSON.stringify(param);
@@ -46,7 +47,7 @@ export class ContactBusinessDelegateService {
             .catch(this.handleError);
     }   
 
-    update(id: number, param: any): Observable<any> {
+    update(id: number, param: any): Observable<ContactDto> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers  });
         let body = JSON.stringify(param);
