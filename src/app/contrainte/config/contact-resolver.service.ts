@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
-import { ContactApplicatifService } from './contact-applicatif.service';
+import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
 
 @Injectable()
 export class ContactResolver implements Resolve<any> {

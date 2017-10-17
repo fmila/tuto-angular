@@ -6,7 +6,7 @@ import { HomeComponent } from '../../presentation/home/home.component';
 import { ContactComponent } from '../../presentation/contact/contact.component';
 import { ContactEditComponent } from '../../presentation/contact/contact-edit/contact-edit.component';
 import { ContactNewComponent } from '../../presentation/contact/contact-new/contact-new.component';
-import { ContactResolver } from '../../service-applicatif/contact/contact-resolver.service';
+import { ContactResolver } from './contact-resolver.service';
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
