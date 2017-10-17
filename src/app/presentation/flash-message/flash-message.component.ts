@@ -23,6 +23,7 @@ export class FlashMessageComponent implements OnInit {
           }
 
           // add alert to array
+          this.alerts = [];
           this.alerts.push(alert);
       });
   }
