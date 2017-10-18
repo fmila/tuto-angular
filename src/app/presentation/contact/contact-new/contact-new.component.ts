@@ -27,7 +27,7 @@ export class ContactNewComponent implements OnInit {
     this.contactForm = this.fb.group({
       'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(4)]],
       'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(4)]],
-      'email': [this.contact.email,[Validators.required,Validators.email]]
+      'email': [this.contact.email,[Validators.required,ContactValidatorService.emailValidator]]
     });
   }
 
