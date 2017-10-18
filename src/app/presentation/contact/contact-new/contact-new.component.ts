@@ -34,7 +34,7 @@ export class ContactNewComponent implements OnInit {
   onSubmit() { 
     if (this.contactForm.valid) {
       this.contactApplicatifService
-        .create(this.contact)
+        .create(this.contactForm.value)
         .subscribe(
           resp => {
             this.router.navigate(['contact-edit', resp.id]);
