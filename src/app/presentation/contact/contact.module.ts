@@ -11,8 +11,7 @@ import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
 import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
 import { FlashMessageService } from '../../presentation/flash-message/flash-message.service';
-import { ContactValidatorService } from '../../contrainte/validator/contact/contact-validator.service';
-import { ControlMessagesComponent } from './control-messages/control-messages.component';
+import { ControlMessagesComponent } from '../control-messages/control-messages.component';
 
 @NgModule({
   imports: [
@@ -23,7 +22,7 @@ import { ControlMessagesComponent } from './control-messages/control-messages.co
     ReactiveFormsModule
   ],
   declarations: [ContactComponent, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent, ControlMessagesComponent],
-  providers: [ContactApplicatifService, FlashMessageService, ContactValidatorService]
+  providers: [ContactApplicatifService, FlashMessageService]
 })
 export class ContactModule { }
 

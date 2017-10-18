@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ContactValidatorService } from '../../../contrainte/validator/contact/contact-validator.service';
+import { FormValidator } from '../../contrainte/validator/form-validator';
 
 @Component({
   selector: 'app-control-messages',
@@ -17,7 +17,7 @@ export class ControlMessagesComponent {
   geErrorMessage() {
     for (let propertyName in this.control.errors) {
       if (this.control.errors.hasOwnProperty(propertyName) && this.control.touched) {
-        return ContactValidatorService.getValidatorErrorMessage(propertyName, this.control.errors[propertyName]);
+        return FormValidator.getValidatorErrorMessage(propertyName, this.control.errors[propertyName]);
       }
     }
     

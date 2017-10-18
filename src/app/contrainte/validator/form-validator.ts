@@ -1,4 +1,4 @@
-export class ContactValidatorService {
+export class FormValidator {
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
         let config = {
             'required': 'Required',

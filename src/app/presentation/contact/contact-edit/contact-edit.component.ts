@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ContactDto } from "../../../donnee/contact/contact-dto";
 import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
-import { ContactValidatorService } from '../../../contrainte/validator/contact/contact-validator.service';
+import { FormValidator } from '../../../contrainte/validator/form-validator';
 
 @Component({
   selector: 'app-contact-edit',
@@ -26,7 +26,7 @@ export class ContactEditComponent implements OnInit {
     this.contactForm = this.fb.group({
       'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(4)]],
       'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(4)]],
-      'email': [this.contact.email,[Validators.required,ContactValidatorService.emailValidator]]
+      'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]]
     });
   }
 
