@@ -9,9 +9,10 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
-import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
 import { FlashMessageService } from '../../presentation/flash-message/flash-message.service';
 import { ControlMessagesComponent } from '../control-messages/control-messages.component';
+import { ContactReadApplicatifService, ContactCudApplicatifService } from '../../service-applicatif/contact/';
+import { ContactCudBusinessDelegateService, ContactReadBusinessDelegateService } from "../../service-business-delegate/contact/";
 
 @NgModule({
   imports: [
@@ -22,7 +23,13 @@ import { ControlMessagesComponent } from '../control-messages/control-messages.c
     ReactiveFormsModule
   ],
   declarations: [ContactComponent, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent, ControlMessagesComponent],
-  providers: [ContactApplicatifService, FlashMessageService]
+  providers: [
+    FlashMessageService, 
+    ContactReadApplicatifService, 
+    ContactCudApplicatifService,
+    ContactCudBusinessDelegateService,
+    ContactReadBusinessDelegateService
+  ]
 })
 export class ContactModule { }
 

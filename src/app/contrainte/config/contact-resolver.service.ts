@@ -3,16 +3,16 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
-import { ContactApplicatifService } from '../../service-applicatif/contact/contact-applicatif.service';
+import { ContactReadApplicatifService } from '../../service-applicatif/contact/';
 
 @Injectable()
 export class ContactResolver implements Resolve<any> {
 
-  constructor(private router: Router, private contactApplicatifService: ContactApplicatifService) { }
+  constructor(private router: Router, private contactReadApplicatifService: ContactReadApplicatifService) { }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
     let id: any = route.params['id'];
-    return this.contactApplicatifService.find(id)
+    return this.contactReadApplicatifService.find(id)
       .map( (res) => {
           if (res === null) {
             this.router.navigate(["/home"]);

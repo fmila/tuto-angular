@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
-import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
+import { ContactCudApplicatifService } from '../../../service-applicatif/contact/';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 import { FormValidator } from '../../../contrainte/validator/form-validator';
 
@@ -18,22 +18,22 @@ export class ContactNewComponent implements OnInit {
   contact: ContactDto;
   contactForm: any;
 
-  constructor(private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService, private router: Router, private fb: FormBuilder) {
+  constructor(private contactCudApplicatifService: ContactCudApplicatifService, private flashMessageService : FlashMessageService, private router: Router, private fb: FormBuilder) {
     
   }
 
   ngOnInit() {
     this.contact = new ContactDto();
     this.contactForm = this.fb.group({
-      'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(4)]],
-      'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(4)]],
+      'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(2)]],
+      'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(2)]],
       'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]]
     });
   }
 
   onSubmit() { 
     if (this.contactForm.valid) {
-      this.contactApplicatifService
+      this.contactCudApplicatifService
         .create(this.contactForm.value)
         .subscribe(
           resp => {

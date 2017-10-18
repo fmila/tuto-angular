@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
-import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
+import { ContactReadApplicatifService, ContactCudApplicatifService } from '../../../service-applicatif/contact/';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 
 @Component({
@@ -19,10 +19,10 @@ export class ContactListComponent implements OnInit {
 
   @Output() onDelete = new EventEmitter<ContactDto>(); 
 
-  constructor(private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService) { }
+  constructor(private contactReadApplicatifService: ContactReadApplicatifService, private contactCudApplicatifService: ContactCudApplicatifService, private flashMessageService : FlashMessageService) { }
 
   ngOnInit() {
-    this.contactApplicatifService.findAll()
+    this.contactReadApplicatifService.findAll()
       .subscribe(resp => {            
           this.contacts = resp;
       });
@@ -33,7 +33,7 @@ export class ContactListComponent implements OnInit {
   }
 
   delete(contact: ContactDto):void {
-    this.contactApplicatifService
+    this.contactCudApplicatifService
       .delete(contact.id)
       .subscribe(
         resp => {

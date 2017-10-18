@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
-import { ContactApplicatifService } from '../../../service-applicatif/contact/contact-applicatif.service';
+import { ContactCudApplicatifService } from '../../../service-applicatif/contact/';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 import { FormValidator } from '../../../contrainte/validator/form-validator';
 
@@ -17,22 +17,22 @@ export class ContactEditComponent implements OnInit {
   contact: ContactDto;
   contactForm: any;
 
-  constructor(private route: ActivatedRoute, private contactApplicatifService: ContactApplicatifService, private flashMessageService : FlashMessageService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private contactCudApplicatifService: ContactCudApplicatifService, private flashMessageService : FlashMessageService, private fb: FormBuilder) {
     
   }
 
   ngOnInit() {
     this.contact = this.route.snapshot.data['contact'];
     this.contactForm = this.fb.group({
-      'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(4)]],
-      'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(4)]],
+      'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(2)]],
+      'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(2)]],
       'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]]
     });
   }
 
   onSubmit() { 
     if (this.contactForm.valid) {
-      this.contactApplicatifService
+      this.contactCudApplicatifService
         .update(this.contact.id, this.contactForm.value)
         .subscribe(
           resp => {

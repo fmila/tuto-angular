@@ -19,7 +19,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
 @Injectable()
-export class ContactBusinessDelegateService {
+export class ContactReadBusinessDelegateService {
     constructor(private http: Http) {
     }
 
@@ -33,33 +33,6 @@ export class ContactBusinessDelegateService {
     find(id: number): Observable<ContactDto> {
         return this.http
             .get(environment.apiEndpoint + '/contact/' + id)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }   
-
-    create(param: any): Observable<ContactDto> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers  });
-        let body = JSON.stringify(param);
-        return this.http
-            .post(environment.apiEndpoint + '/contact/', body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }   
-
-    update(id: number, param: any): Observable<ContactDto> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers  });
-        let body = JSON.stringify(param);
-        return this.http
-            .put(environment.apiEndpoint + '/contact/' + id, body, options)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }   
-
-    delete(id: number): Observable<any> {
-        return this.http
-            .delete(environment.apiEndpoint + '/contact/' + id)
             .map(this.extractData)
             .catch(this.handleError);
     } 
