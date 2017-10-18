@@ -7,6 +7,7 @@ import { ContactComponent } from '../../presentation/contact/contact.component';
 import { ContactEditComponent } from '../../presentation/contact/contact-edit/contact-edit.component';
 import { ContactNewComponent } from '../../presentation/contact/contact-new/contact-new.component';
 import { ContactResolver } from './contact-resolver.service';
+import { ContactCudBusinessDelegateService, ContactReadBusinessDelegateService } from "../../service-business-delegate/contact/";
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -25,7 +26,7 @@ const routes: Routes = [
 @NgModule({
     imports: [ RouterModule.forRoot(routes), HttpModule ],
     exports: [ RouterModule ],
-    providers: [ ContactResolver ]
+    providers: [ ContactResolver, ContactCudBusinessDelegateService, ContactReadBusinessDelegateService ]
 })
 
 export class AppRoutingModule {}
