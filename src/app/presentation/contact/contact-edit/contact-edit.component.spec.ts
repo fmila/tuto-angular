@@ -77,6 +77,17 @@ describe('ContactEditComponent', () => {
       expect(applicatifSpy).toHaveBeenCalledWith(expectedModifiedContact.id, expectedModifiedContact);  
   }));
 
+  it('should update model on submit', fakeAsync(() => {
+    let validContact = {
+      id: CONTACTS_DTO[0].id,
+      email: CONTACTS_DTO[0].email,
+      lastName: CONTACTS_DTO[0].lastName,
+      firstName: CONTACTS_DTO[0].firstName
+    };
+    component.onSubmit();
+    expect(component.contact).toEqual(validContact);
+  }));
+
   // create reusable function for a dry spec.
   function updateForm(email, lastName, firstname) {
     component.contactForm.controls['email'].setValue(email);
