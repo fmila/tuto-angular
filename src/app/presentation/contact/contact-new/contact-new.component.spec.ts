@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ContactNewComponent } from './contact-new.component';
+import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
+import { ContactCudApplicatifMockService, ContactCudApplicatifServiceACI } from '../../../service-applicatif/contact/';
+import { ControlMessagesComponent } from '../../control-messages/control-messages.component';
 
 describe('ContactNewComponent', () => {
   let component: ContactNewComponent;
@@ -8,7 +13,13 @@ describe('ContactNewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ContactNewComponent ]
+      imports: [ FormsModule, RouterTestingModule, ReactiveFormsModule ],
+      declarations: [ ContactNewComponent, ControlMessagesComponent ],
+      providers: [
+        { provide: ContactCudApplicatifServiceACI, useClass: ContactCudApplicatifMockService },
+        FlashMessageService,
+        FormBuilder
+      ]
     })
     .compileComponents();
   }));
