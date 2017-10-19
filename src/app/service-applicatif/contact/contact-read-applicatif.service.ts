@@ -3,9 +3,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { ContactDto } from "../../donnee/contact/contact-dto";
 import { ContactReadMetierService } from "../../service-metier/contact/";
+import { IContactReadApplicatifService } from ".";
 
 @Injectable()
-export class ContactReadApplicatifService {
+export class ContactReadApplicatifService implements IContactReadApplicatifService {
 
     constructor(private contactReadMetierService: ContactReadMetierService) { }
 

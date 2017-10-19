@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ContactDto } from "../../../donnee/contact/contact-dto";
-import { ContactCudApplicatifService } from '../../../service-applicatif/contact/';
+import { ContactCudApplicatifServiceACI } from '../../../service-applicatif/contact/';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 import { FormValidator } from '../../../contrainte/validator/form-validator';
 
@@ -17,7 +17,7 @@ export class ContactEditComponent implements OnInit {
   contact: ContactDto;
   contactForm: any;
 
-  constructor(private route: ActivatedRoute, private contactCudApplicatifService: ContactCudApplicatifService, private flashMessageService : FlashMessageService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private contactCudApplicatifService: ContactCudApplicatifServiceACI, private flashMessageService : FlashMessageService, private fb: FormBuilder) {
     
   }
 

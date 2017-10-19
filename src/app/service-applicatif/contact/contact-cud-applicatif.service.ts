@@ -3,9 +3,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { ContactDto } from "../../donnee/contact/contact-dto";
 import { ContactCudMetierService } from "../../service-metier/contact/";
+import { ContactCudApplicatifServiceACI } from ".";
 
 @Injectable()
-export class ContactCudApplicatifService {
+export class ContactCudApplicatifService implements ContactCudApplicatifServiceACI {
 
     constructor(private contactCudMetierService: ContactCudMetierService) { }
 

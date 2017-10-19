@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ContactDto } from "../../donnee/contact";
+import { ContactCudApplicatifServiceACI } from ".";
 
 @Injectable()
-export class ContactCudApplicatifMockService {
+export class ContactCudApplicatifMockService implements ContactCudApplicatifServiceACI {
 
     constructor() { }
 
