@@ -3,10 +3,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { ContactDto } from "../../donnee/contact";
 import { CONTACTS_DTO } from "../../donnee/contact";
-import { IContactReadApplicatifService } from ".";
+import { ContactReadApplicatifServiceACI } from ".";
 
 @Injectable()
-export class ContactReadApplicatifMockService implements IContactReadApplicatifService {
+export class ContactReadApplicatifMockService implements ContactReadApplicatifServiceACI {
 
     constructor() { }
 
