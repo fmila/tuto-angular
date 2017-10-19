@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormControl } from '@angular/forms';
 
 import { ControlMessagesComponent } from './control-messages.component';
 
@@ -16,6 +17,7 @@ describe('ControlMessagesComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ControlMessagesComponent);
     component = fixture.componentInstance;
+    component.control = new FormControl();
     fixture.detectChanges();
   });
 

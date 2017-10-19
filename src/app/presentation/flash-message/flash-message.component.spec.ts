@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { FlashMessageComponent } from './flash-message.component';
+import { FlashMessageService } from './flash-message.service';
 
 describe('FlashMessageComponent', () => {
   let component: FlashMessageComponent;
@@ -8,7 +10,11 @@ describe('FlashMessageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlashMessageComponent ]
+      imports: [ RouterTestingModule ],
+      declarations: [ FlashMessageComponent ],
+      providers: [
+        FlashMessageService
+      ]
     })
     .compileComponents();
   }));
