@@ -24,6 +24,7 @@ export class ContactEditComponent implements OnInit {
   ngOnInit() {
     this.contact = this.route.snapshot.data['contact'];
     this.contactForm = this.fb.group({
+      'id': [this.contact.id],
       'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(2)]],
       'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(2)]],
       'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]]
@@ -31,12 +32,12 @@ export class ContactEditComponent implements OnInit {
   }
 
   onSubmit() { 
-    if (this.contactForm.valid) {
+    if (this.contactForm.valid, this.contactForm.controls['id'].value === this.contact.id) {
       this.contactCudApplicatifService
         .update(this.contact.id, this.contactForm.value)
         .subscribe(
           resp => {
-            this.flashMessageService.success('Updated!!', );
+            this.flashMessageService.success('Updated!!');
           },
           err => {
             this.flashMessageService.error('An error occured!!');

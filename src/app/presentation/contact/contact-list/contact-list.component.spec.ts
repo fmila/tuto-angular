@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ContactListComponent } from './contact-list.component';
-import { ContactCudApplicatifMockService, ContactCudApplicatifServiceACI, ContactReadApplicatifMockService, ContactReadApplicatifServiceACI } from '../../../service-applicatif/contact/';
+import { ContactApplicatifMockServiceProviders } from '../../../service-applicatif/contact/';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
 
 describe('ContactListComponent', () => {
@@ -14,8 +14,7 @@ describe('ContactListComponent', () => {
       imports: [ RouterTestingModule ],
       declarations: [ ContactListComponent ],
       providers: [
-        { provide: ContactReadApplicatifServiceACI, useClass: ContactReadApplicatifMockService },
-        { provide: ContactCudApplicatifServiceACI, useClass: ContactCudApplicatifMockService },
+        ContactApplicatifMockServiceProviders,
         FlashMessageService
       ]
     })

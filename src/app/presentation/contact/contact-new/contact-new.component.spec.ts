@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ContactNewComponent } from './contact-new.component';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
-import { ContactCudApplicatifMockService, ContactCudApplicatifServiceACI } from '../../../service-applicatif/contact/';
+import { ContactApplicatifMockServiceProviders } from '../../../service-applicatif/contact/';
 import { ControlMessagesComponent } from '../../control-messages/control-messages.component';
 
 describe('ContactNewComponent', () => {
@@ -16,7 +16,7 @@ describe('ContactNewComponent', () => {
       imports: [ FormsModule, RouterTestingModule, ReactiveFormsModule ],
       declarations: [ ContactNewComponent, ControlMessagesComponent ],
       providers: [
-        { provide: ContactCudApplicatifServiceACI, useClass: ContactCudApplicatifMockService },
+        ContactApplicatifMockServiceProviders,
         FlashMessageService,
         FormBuilder
       ]

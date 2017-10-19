@@ -22,6 +22,7 @@
           <app-control-messages [control]="contactForm.controls.email"></app-control-messages>
         </div>
       </div>
+      <input type="hidden" required formControlName="id">
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default" [disabled]="!contactForm.valid">Update</button>
