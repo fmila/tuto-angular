@@ -1,5 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
+import { CONTACTS_DTO, ContactDto } from "../../../donnee/contact";
 import { ContactEditComponent } from './contact-edit.component';
 
 describe('ContactEditComponent', () => {

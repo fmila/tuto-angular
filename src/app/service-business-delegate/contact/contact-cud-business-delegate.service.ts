@@ -23,7 +23,7 @@ export class ContactCudBusinessDelegateService {
     constructor(private http: Http) {
     }
 
-    create(param: any): Observable<ContactDto> {
+    create(param: any): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers  });
         let body = JSON.stringify(param);
@@ -33,7 +33,7 @@ export class ContactCudBusinessDelegateService {
             .catch(this.handleError);
     }   
 
-    update(id: number, param: any): Observable<ContactDto> {
+    update(id: number, param: any): Observable<any> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers  });
         let body = JSON.stringify(param);
