@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ContactNewComponent } from './contact-new.component';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
-import { ContactApplicatifMockServiceProviders } from '../../../service-applicatif/contact/';
+import { ContactApplicatifMockServiceProviders } from '../../../service-applicatif/contact/contact-applicatif.service.provider';
 import { ControlMessagesComponent } from '../../control-messages/control-messages.component';
 
 describe('ContactNewComponent', () => {

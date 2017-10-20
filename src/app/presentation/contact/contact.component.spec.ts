@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ContactComponent } from './contact.component';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { ContactApplicatifMockServiceProviders } from '../../service-applicatif/contact/';
+import { ContactApplicatifMockServiceProviders } from '../../service-applicatif/contact/contact-applicatif.service.provider';
 import { FlashMessageService } from '../../presentation/flash-message/flash-message.service';
 
 

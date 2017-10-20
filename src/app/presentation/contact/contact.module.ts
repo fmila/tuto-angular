@@ -11,7 +11,7 @@ import { ContactEditComponent } from './contact-edit/contact-edit.component';
 import { ContactNewComponent } from './contact-new/contact-new.component';
 import { FlashMessageService } from '../../presentation/flash-message/flash-message.service';
 import { ControlMessagesComponent } from '../control-messages/control-messages.component';
-import { ContactApplicatifServiceProviders } from '../../service-applicatif/contact/';
+import { ContactApplicatifServiceProviders } from '../../service-applicatif/contact/contact-applicatif.service.provider';
 
 @NgModule({
   imports: [
