@@ -18,7 +18,7 @@ import { ServiceMetierModule } from '../../service-metier/service-metier.module'
 import { ServiceBusinessDelegateModule } from '../../service-business-delegate/service-business-delegate.module';
 
 // module routing
-import { AppRoutingModule } from '../../contrainte/config/app-routing.module';
+import { AppRoutingModule } from '../../contrainte/config/_app/app-routing.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

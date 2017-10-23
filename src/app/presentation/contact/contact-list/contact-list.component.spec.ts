@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ContactListComponent } from './contact-list.component';
 import { ContactApplicatifMockServiceProviders } from '../../../service-applicatif/contact/contact-applicatif.service.provider';
 import { FlashMessageService } from '../../../presentation/flash-message/flash-message.service';
+import { ContactDetailComponent } from "../contact-detail/contact-detail.component";
 
 describe('ContactListComponent', () => {
   let component: ContactListComponent;
@@ -12,7 +13,7 @@ describe('ContactListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ RouterTestingModule ],
-      declarations: [ ContactListComponent ],
+      declarations: [ ContactListComponent, ContactDetailComponent ],
       providers: [
         ContactApplicatifMockServiceProviders,
         FlashMessageService
