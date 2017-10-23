@@ -1,9 +1,8 @@
-import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
-import { ContactReadApplicatifServiceACI } from '../../service-applicatif/contact/';
+import { ContactReadApplicatifServiceACI } from '../../../service-applicatif/contact/';
 
 @Injectable()
 export class ContactResolver implements Resolve<any> {

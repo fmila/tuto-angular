@@ -13,8 +13,8 @@ export class ContactListComponent implements OnInit {
 
   contacts : ContactDto[];
 
-  @Output() onSelect = new EventEmitter<ContactDto>(); 
-
+  contact : ContactDto;
+  
   @Output() onEdit = new EventEmitter<ContactDto>(); 
 
   @Output() onDelete = new EventEmitter<ContactDto>(); 
@@ -29,7 +29,7 @@ export class ContactListComponent implements OnInit {
   }
 
   select(contact: ContactDto):void {
-    this.onSelect.emit(contact);
+    this.contact = contact;
   }
 
   delete(contact: ContactDto):void {

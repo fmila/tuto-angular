@@ -37,7 +37,7 @@ export class ContactNewComponent implements OnInit {
         .create(this.contactForm.value)
         .subscribe(
           resp => {
-            this.router.navigate(['contact-edit', resp.id]);
+            this.router.navigate(['contact/edit', resp.id]);
             this.flashMessageService.success('Added!!', true);
           },
           err => {

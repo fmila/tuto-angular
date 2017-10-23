@@ -17,7 +17,7 @@ import { ServiceMetierModule } from '../../../service-metier/service-metier.modu
 import { ServiceBusinessDelegateModule } from '../../../service-business-delegate/service-business-delegate.module';
 
 // module routing
-import { AppRoutingModule } from '../../../contrainte/config/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 // component flash message
 import { FlashMessageComponent } from '../../../presentation/flash-message/flash-message.component';

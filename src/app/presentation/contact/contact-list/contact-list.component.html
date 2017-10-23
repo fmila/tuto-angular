@@ -1,18 +1,25 @@
-<table class="table table-striped">
-  <thead>
-    <th>ID</th>
-    <th>First name</th>
-    <th>Last name</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let ct of contacts">
-      <td (click)="select(ct)">{{ ct.id }}</td>
-      <td (click)="select(ct)">{{ ct.firstName }}</td>
-      <td (click)="select(ct)">{{ ct.lastName }}</td>
-      <td><a [routerLink]="['/contact-edit', ct.id]"><span class="glyphicon glyphicon-pencil"></span></a></td>
-      <td><a (click)="delete(ct)"><span class="glyphicon glyphicon-trash"></span></a></td>
-    </tr>
-  </tbody>
-</table>
-<a routerLink="/contact-new"><span class="glyphicon glyphicon-plus"></span> Add new contact</a>
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ct of contacts">
+          <td (click)="select(ct)">{{ ct.id }}</td>
+          <td (click)="select(ct)">{{ ct.firstName }}</td>
+          <td (click)="select(ct)">{{ ct.lastName }}</td>
+          <td><a routerLink="{{ '../edit/' + ct.id }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><a (click)="delete(ct)"><span class="glyphicon glyphicon-trash"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="../new"><span class="glyphicon glyphicon-plus"></span> Add new contact</a>
+  </div>
+  <div class="col-md-2" *ngIf="contact">
+      <app-contact-detail [contact]="contact"></app-contact-detail>
+  </div>
+</div>
 <router-outlet></router-outlet>
