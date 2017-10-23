@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ContactApplicatifServiceProviders } from "./contact/contact-applicatif.service.provider";
+import { ContactFactoryService } from "../contrainte/factory/contact";
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { ContactApplicatifServiceProviders } from "./contact/contact-applicatif.
   ],
   declarations: [],
   providers: [
-        ...ContactApplicatifServiceProviders      
+        ...ContactApplicatifServiceProviders,
+        ContactFactoryService      
   ]
 })
 export class ServiceApplicatifModule { }
