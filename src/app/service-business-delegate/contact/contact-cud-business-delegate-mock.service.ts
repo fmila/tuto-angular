@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { ContactCudBusinessDelegateServiceACI } from ".";
+
 @Injectable()
-export class ContactCudBusinessDelegateMockService {
+export class ContactCudBusinessDelegateMockService implements ContactCudBusinessDelegateServiceACI {
 
     constructor() { }
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactCudBusinessDelegateService, ContactReadBusinessDelegateService } from "../service-business-delegate/contact/";
+import { ContactMetierServiceProviders } from './contact/contact-metier.service.provider';
 
 @NgModule({
   imports: [
@@ -8,8 +8,7 @@ import { ContactCudBusinessDelegateService, ContactReadBusinessDelegateService }
   ],
   declarations: [],
   providers: [
-    ContactCudBusinessDelegateService,
-    ContactReadBusinessDelegateService
-  ]
+     ...ContactMetierServiceProviders
+  ] 
 })
 export class ServiceMetierModule { }

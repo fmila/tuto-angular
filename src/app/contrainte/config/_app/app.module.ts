@@ -33,6 +33,7 @@ import { FlashMessageComponent } from '../../../presentation/flash-message/flash
     ContactModule,
     HomeModule,
     ServiceApplicatifModule,
+    ServiceMetierModule,
     AppRoutingModule,
     ServiceBusinessDelegateModule
   ],

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { ContactDto } from "../../donnee/contact/contact-dto";
-import { ContactCudMetierService } from "../../service-metier/contact/";
+import { ContactCudMetierServiceACI } from "../../service-metier/contact/";
 import { ContactCudApplicatifServiceACI } from ".";
 
 @Injectable()
 export class ContactCudApplicatifService implements ContactCudApplicatifServiceACI {
 
-    constructor(private contactCudMetierService: ContactCudMetierService) { }
+    constructor(private contactCudMetierService: ContactCudMetierServiceACI) { }
 
     create(contact: ContactDto): Observable<any> {
         return this.contactCudMetierService.create(contact);
