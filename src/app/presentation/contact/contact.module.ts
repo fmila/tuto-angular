@@ -14,6 +14,9 @@ import { ControlMessagesComponent } from '../control-messages/control-messages.c
 import { ContactRoutingModule } from "../../contrainte/config/contact/contact-routing.module";
 import { ContactRootComponent } from './contact-root/contact-root.component';
 
+// custom pipe
+import { DateToIsoPipe } from '../../presentation/shared/';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +26,7 @@ import { ContactRootComponent } from './contact-root/contact-root.component';
     ReactiveFormsModule,
     ContactRoutingModule
   ],
-  declarations: [ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent, ControlMessagesComponent, ContactRootComponent],
+  declarations: [DateToIsoPipe, ContactListComponent, ContactDetailComponent, ContactEditComponent, ContactNewComponent, ControlMessagesComponent, ContactRootComponent],
   providers: [
     FlashMessageService
   ]

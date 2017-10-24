@@ -8,7 +8,7 @@ export class ContactFactoryService {
     constructor() { }
 
     contactDtoFromDo(ctDo): ContactDto {
-        return new ContactDto(ctDo.id, ctDo.firstName, ctDo.lastName);
+        return new ContactDto(ctDo.id, ctDo.firstName, ctDo.lastName, ctDo.createdAt, ctDo.updatedAt);
     }
     
     contactsDtoFromDo(contactsDo: ContactDo[]): ContactDto[] {
