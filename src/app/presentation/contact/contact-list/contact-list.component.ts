@@ -19,13 +19,26 @@ export class ContactListComponent implements OnInit {
 
   @Output() onDelete = new EventEmitter<ContactDto>(); 
 
-  constructor(private contactReadApplicatifService: ContactReadApplicatifServiceACI, private contactCudApplicatifService: ContactCudApplicatifServiceACI, private flashMessageService : FlashMessageService) { }
+  public busy: boolean;
+
+  constructor(private contactReadApplicatifService: ContactReadApplicatifServiceACI, private contactCudApplicatifService: ContactCudApplicatifServiceACI, private flashMessageService : FlashMessageService) { 
+    this.busy = true;
+  }
 
   ngOnInit() {
     this.contactReadApplicatifService.findAll()
-      .subscribe(resp => {            
+      .subscribe(
+        resp => {            
           this.contacts = resp;
-      });
+          this.busy = false;
+        },
+        err => {
+          this.busy = false;
+        },
+        () => { // completed
+          this.busy = false;
+        }   
+      );
   }
 
   select(contact: ContactDto):void {
