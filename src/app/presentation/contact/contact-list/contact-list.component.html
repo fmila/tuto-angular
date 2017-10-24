@@ -12,7 +12,7 @@
           <td (click)="select(ct)">{{ ct.id }}</td>
           <td (click)="select(ct)">{{ ct.firstName }}</td>
           <td (click)="select(ct)">{{ ct.lastName }}</td>
-          <td (click)="select(ct)">{{ ct.createdAt|dateToIso }}</td>
+          <td (click)="select(ct)" highlight>{{ ct.createdAt|dateToIso }}</td>
           <td><a routerLink="{{ '../edit/' + ct.id }}"><span class="glyphicon glyphicon-pencil"></span></a></td>
           <td><a (click)="delete(ct)"><span class="glyphicon glyphicon-trash"></span></a></td>
         </tr>
