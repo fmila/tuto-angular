@@ -27,7 +27,9 @@ export class ContactEditComponent implements OnInit {
       'id': [this.contact.id],
       'firstName': [this.contact.firstName,[Validators.required,Validators.minLength(2)]],
       'lastName': [this.contact.lastName,[Validators.required,Validators.minLength(2)]],
-      'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]]
+      'email': [this.contact.email,[Validators.required, FormValidator.emailValidator]],
+      'createdAt': [this.contact.createdAt],
+      'updatedAt': [this.contact.updatedAt]
     });
   }
 

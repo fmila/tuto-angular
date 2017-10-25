@@ -51,7 +51,9 @@ describe('ContactEditComponent', () => {
       id: CONTACTS_DTO[0].id,
       email: CONTACTS_DTO[0].email,
       lastName: CONTACTS_DTO[0].lastName,
-      firstName: CONTACTS_DTO[0].firstName
+      firstName: CONTACTS_DTO[0].firstName,
+      createdAt: CONTACTS_DTO[0].createdAt,
+      updatedAt: CONTACTS_DTO[0].updatedAt
     };
     updateForm(validContact.email, validContact.lastName, validContact.firstName);
     expect(component.contactForm.value).toEqual(validContact);
@@ -64,7 +66,7 @@ describe('ContactEditComponent', () => {
 
   it('should save modified contact when save button is clicked', fakeAsync(() => {
       const applicatifSpy = spyOn(contactCudApplicatifMockService, 'update').and.callThrough(); 
-      let expectedModifiedContact: ContactDto = { id: 1, firstName: "Firstname modified", lastName: "Lastname modified", email: "t@t.com"};
+      let expectedModifiedContact: ContactDto = { id: 1, firstName: "Firstname modified", lastName: "Lastname modified", email: "t@t.com", createdAt:"2017-10-24T11:33:56+03:00", updatedAt:"2017-10-24T11:33:56+03:00" };
       var editableProperties: string[] = ["firstName", "lastName", "email"];
       let inputs = fixture.nativeElement.querySelectorAll('input');
       editableProperties.forEach((prop, index) => {
@@ -82,7 +84,9 @@ describe('ContactEditComponent', () => {
       id: CONTACTS_DTO[0].id,
       email: CONTACTS_DTO[0].email,
       lastName: CONTACTS_DTO[0].lastName,
-      firstName: CONTACTS_DTO[0].firstName
+      firstName: CONTACTS_DTO[0].firstName,
+      createdAt: CONTACTS_DTO[0].createdAt,
+      updatedAt: CONTACTS_DTO[0].updatedAt
     };
     component.onSubmit();
     expect(component.contact).toEqual(validContact);
