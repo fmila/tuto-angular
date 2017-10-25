@@ -7,8 +7,14 @@ describe('tuto-contact-angular App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
+  it('should display welcome message on home page', () => {
+    page.navigateTo('/');
     expect(page.getParagraphText()).toEqual('Hello, welcome!');
   });
+
+  it('should display contact list', () => {
+    page.navigateTo('/contact/list');
+    let contacts = page.countContactList();
+    expect(contacts.count()).toEqual(4);
+  })
 });
