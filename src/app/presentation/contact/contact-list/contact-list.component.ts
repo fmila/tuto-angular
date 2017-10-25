@@ -7,7 +7,7 @@ import { FlashMessageService } from '../../../presentation/flash-message/flash-m
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.css']
+  styleUrls: ['./contact-list.component.css', '../contact-edit/contact-edit.component.css']
 })
 export class ContactListComponent implements OnInit {
 
